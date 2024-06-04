@@ -12,7 +12,7 @@ export async function GET() {
     const user = await getUser()
 
     if (!user || user === null || !user.id) {
-      throw new Error("Something went wrong. I'm sorry")
+      return NextResponse.json("there was an error")
     }
 
     let dbUser = await User.findOne({ id: user.id })
