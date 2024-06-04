@@ -5,14 +5,15 @@ import { redirect } from "next/navigation"
 import { NextResponse } from "next/server"
 
 export async function GET() {
-  // try {
+  try {
     await connectToDB()
     const { getUser } = getKindeServerSession()
 
     const user = await getUser()
 
     if (!user || user === null || !user.id) {
-      throw new Error("Something went wrong. I'm sorry")
+      // throw new Error("Something went wrong. I'm sorry")
+      return null;
     }
 
     let dbUser = await User.findOne({ id: user.id })
@@ -28,7 +29,7 @@ export async function GET() {
     }
 
     return redirect("http://localhost:3000")
-  // } catch (error: any) {
-  //   throw new Error(`Failed to fetch or create User: ${error.message}`)
-  // }
+  } catch (error: any) {
+    throw new Error(`Failed to fetch or create User: ${error.message}`)
+  }
 }
