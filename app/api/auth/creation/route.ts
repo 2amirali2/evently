@@ -4,7 +4,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { NextResponse } from "next/server"
 
 export async function GET() {
-  try {
+  // try {
     connectToDB()
     const { getUser } = getKindeServerSession()
 
@@ -27,7 +27,7 @@ export async function GET() {
     }
 
     return NextResponse.redirect("http://localhost:3000")
-  } catch (error: any) {
-    throw new Error(`Failed to fetch or create User: ${error.message}`)
-  }
+  // } catch (error: any) {
+  //   throw new Error(`Failed to fetch or create User: ${error.message}`)
+  // }
 }
