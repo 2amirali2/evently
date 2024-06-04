@@ -5,7 +5,7 @@ import { NextResponse } from "next/server"
 
 export async function GET() {
   // try {
-    connectToDB()
+    await connectToDB()
     const { getUser } = getKindeServerSession()
 
     const user = await getUser()
