@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { connectToDB } from "@/lib/db"
 import User from "@/lib/models/user.model"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
@@ -13,7 +11,8 @@ export async function GET() {
     const user = await getUser()
 
     if (!user || user === null || !user.id) {
-      throw new Error("Something went wrong. I'm sorry")
+      // throw new Error("Something went wrong. I'm sorry")
+      return null
     }
 
     let dbUser = await User.findOne({ id: user.id })
