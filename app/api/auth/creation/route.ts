@@ -1,6 +1,7 @@
 import { connectToDB } from "@/lib/db"
 import User from "@/lib/models/user.model"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
+import { redirect } from "next/navigation"
 import { NextResponse } from "next/server"
 
 export async function GET() {
@@ -26,7 +27,7 @@ export async function GET() {
       })
     }
 
-    return NextResponse.redirect("http://localhost:3000")
+    return redirect("http://localhost:3000")
   // } catch (error: any) {
   //   throw new Error(`Failed to fetch or create User: ${error.message}`)
   // }
