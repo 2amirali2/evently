@@ -3,10 +3,8 @@ import User from "@/lib/models/user.model"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { redirect } from "next/navigation"
 import { NextResponse } from "next/server"
-import { unstable_noStore as noStore } from "next/cache"
 
 export async function GET() {
-  noStore()
   try {
     await connectToDB()
     const { getUser } = getKindeServerSession()
@@ -14,8 +12,7 @@ export async function GET() {
     const user = await getUser()
 
     if (!user || user === null || !user.id) {
-      // throw new Error("Something went wrong. I'm sorry")
-      return null;
+      throw new Error("Something went wrong. I'm sorry")
     }
 
     let dbUser = await User.findOne({ id: user.id })
