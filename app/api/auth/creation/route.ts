@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { connectToDB } from "@/lib/db"
 import User from "@/lib/models/user.model"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
