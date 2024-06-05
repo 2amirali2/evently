@@ -34,7 +34,7 @@ const Card = async ({ event, hasOrderLink, hidePrice }: Props) => {
     const dbUser = await fetchUser(user.id)
     if(!dbUser) return;
     
-    const isEventCreator = event.organizer._id.toString() === dbUser._id
+    const isEventCreator = event.organizer._id.toString() === dbUser.id
 
   return (
     <div className="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
