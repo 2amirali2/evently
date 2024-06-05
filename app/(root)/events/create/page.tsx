@@ -8,7 +8,7 @@ const CreateEventPage = async () => {
   if(!user) return null;
 
   const userInfo = await fetchUser(user.id)
-
+  console.log(userInfo._id.toString())
   
   return (
     <>
@@ -18,7 +18,7 @@ const CreateEventPage = async () => {
         </h1>
       </section>
       <div className="wrapper my-8">
-        <EventForm type="Create" userId={userInfo._id} />
+        <EventForm type="Create" userId={userInfo._id.toString()} />
       </div>
     </>
   )
