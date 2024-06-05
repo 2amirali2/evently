@@ -179,7 +179,7 @@ const EventForm = ({ type, userId, event, eventId }: EventFormProps) => {
                     <SingleImageDropzone
                       width={200}
                       height={200}
-                      value={field.value ?? file}
+                      value={file}
                       onChange={(file) => {
                         setFile(file)
                       }}
