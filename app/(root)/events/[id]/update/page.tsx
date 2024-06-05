@@ -22,7 +22,7 @@ const EventDetailsPage = async ({ params }: { params: { id: string } }) => {
       <div className="wrapper my-8">
         <EventForm
           type="Update"
-          userId={userInfo._id.toString()}
+          userId={userInfo._id}
           eventId={event._id}
           event={event}
         />

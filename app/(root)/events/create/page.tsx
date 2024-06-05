@@ -18,7 +18,7 @@ const CreateEventPage = async () => {
         </h1>
       </section>
       <div className="wrapper my-8">
-        <EventForm type="Create" userId={userInfo._id.toString()} />
+        <EventForm type="Create" userId={userInfo._id} />
       </div>
     </>
   )
