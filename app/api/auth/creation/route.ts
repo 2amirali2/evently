@@ -27,7 +27,7 @@ export async function GET() {
       })
     }
 
-    return NextResponse.redirect("https://evently-j3lreg78u-amiralis-projects-bb73305b.vercel.app")
+    return NextResponse.redirect("https://evently-nine-mu.vercel.app")
   } catch (error: any) {
     throw new Error(`Failed to fetch or create User: ${error.message}`)
   }
