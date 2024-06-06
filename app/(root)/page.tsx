@@ -4,8 +4,11 @@ import Hero from "@/components/shared/Hero"
 import Search from "@/components/shared/Search"
 import { getAllEvents } from "@/lib/actions/event.action"
 import { SearchParamProps } from "@/types"
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 
 export default async function Home({ searchParams }: SearchParamProps) {
+  const { getUser } = getKindeServerSession()
+  const user = await getUser()
   const page = Number(searchParams?.page) || 1
   const searchText = (searchParams?.query as string) || ""
   const category = (searchParams?.category as string) || ""
@@ -30,19 +33,27 @@ export default async function Home({ searchParams }: SearchParamProps) {
               Thousands of Events
             </h3>
           </div>
-          <div className="flex w-full flex-col gap-5 md:flex-row">
-            <Search />
-            <CategoryFilter />
-          </div>
-          <Collection
-            data={events?.data}
-            emptyTitle="No Events Found"
-            emptyStateSubtext="Come back later"
-            collectionType="All_Events"
-            limit={6}
-            page={page}
-            totalPages={events?.totalPages}
-          />
+          {user ? (
+            <>
+              <div className="flex w-full flex-col gap-5 md:flex-row">
+                <Search />
+                <CategoryFilter />
+              </div>
+              <Collection
+                data={events?.data}
+                emptyTitle="No Events Found"
+                emptyStateSubtext="Come back later"
+                collectionType="All_Events"
+                limit={6}
+                page={page}
+                totalPages={events?.totalPages}
+              />
+            </>
+          ) : (
+            <div className="">
+              <h1 className="font-bold text-2xl text-gray-600 text-center">⭐Login to your account to create and see events!⭐</h1>
+            </div>
+          )}
         </div>
       </section>
     </main>
